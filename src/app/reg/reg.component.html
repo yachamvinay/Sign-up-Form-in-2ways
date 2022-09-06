@@ -1,0 +1,101 @@
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
+    <p>
+      <label for="firstname">First Name</label>
+      <input type="text" id="firstname" name="firstname" #firstname="ngModel" required minlength="10"  [(ngModel)]="contact.firstname">   
+    </p>
+  
+    <div *ngIf="!firstname.valid">
+      <div *ngIf="firstname.errors?.['required']">
+            First Name is required
+          </div>
+          <div *ngIf="firstname.errors?.['minlength']">
+            First Name should be min length of 10
+          </div>
+    </div>
+    
+  
+  
+  
+    <p>
+      <label for="lastname">Last Name</label>
+      <input type="text" id="lastname" name="lastname" #lastname="ngModel" required minlength="10" [(ngModel)]="contact.lastname">
+    </p>
+   
+    <div *ngIf="!lastname.valid">
+      <div *ngIf="lastname.errors?.['required']">
+            Last Name is required
+          </div>
+          <div *ngIf="lastname.errors?.['minlength']">
+            Last Name should be min length of 10
+          </div>
+    </div>
+  
+    <p>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" #email="ngModel" pattern="" [(ngModel)]="contact.email">
+  
+      <div *ngIf="!email.valid">
+        <div *ngIf="email.errors?.['required']">
+              Email is required
+            </div>
+            <div *ngIf="email.errors?.['pattern']">
+              Pattern Should be Matched
+            </div>
+      </div>
+
+
+      <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" #password="ngModel" required minlength="10" pattern="" [(ngModel)]="contact.password">
+    
+        <div *ngIf="!password.valid">
+          <div *ngIf="password.errors?.['required']">
+                Password is required
+              </div>
+              <div *ngIf="password.errors?.['minlength']">
+                Password should be min length of 10
+              </div>
+        </div>
+  
+    <p>
+      <label for="gender">Gender</label>
+      <input type="radio" value="male" id="gender" name="gender" [(ngModel)]="contact.gender" >Male
+      <input type="radio" value="female" id="gender" name="gender" [(ngModel)]="contact.gender" >Female
+    </p>
+    <p>
+      <label for="dateofbirth">Date of Birth</label>
+      <input type="text" id="dateofbirth" name="dateofbirth" [(ngModel)]="contact.dateofbirth">
+    </p>
+    <p>
+      <label for="country">Country</label>
+      <select id="country" name="country" [(ngModel)]="contact.country">
+        <option [ngValue]="c.id" *ngFor="let c of countryList">{{c.name}}</option>
+      </select>
+    </p>
+  
+    
+      <p>
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" [(ngModel)]="contact.city">
+      </p>
+      <p>
+        <label for="street">Street</label>
+        <input type="text" id="street" name="street" [(ngModel)]="contact.street">
+      </p>
+      <p>
+        <label for="pincode">Pin Code</label>
+        <input type="text" id="pincode" name="pincode" [(ngModel)]="contact.pincode">
+      </p>
+      <p>
+        <label for="phonenumber">Phone Number</label>
+        <input type="number" id="phonenumber" name="phonenumber" [(ngModel)]="contact.phonenumber">
+      </p>
+   
+   
+    
+  
+   
+  <p>
+    <button type="submit">Submit</button>
+  </p>
+  </form>
